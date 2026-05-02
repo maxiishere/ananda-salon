@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananda Salon | Éternelle</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FDFBF7',
+                        terracotta: '#A24836',
+                        gold: '#D4AF37',
+                        charcoal: '#2D2D2D',
+                        cream: '#F4EFE6'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #2D2D2D;
+        }
+        
+        .bg-hero {
+            background-image: linear-gradient(rgba(45, 45, 45, 0.6), rgba(45, 45, 45, 0.6)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #333; 
+        }
+        
+        #chat-messages::-webkit-scrollbar { width: 6px; }
+        #chat-messages::-webkit-scrollbar-thumb { background-color: #D4AF37; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+<div id="main-website">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-serif text-white tracking-widest font-bold" id="nav-logo">ANANDA SALON</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-1">ABOUT US</a>
+                    <a href="#services" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-2">LAYANAN</a>
+                    <a href="#booking" class="bg-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition font-semibold text-sm tracking-wide shadow-lg">RESERVASI</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-hero h-screen flex flex-col items-center justify-center text-center px-4 relative">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        
+        <div class="relative z-10 max-w-4xl flex flex-col items-center mt-12">
+            
+            <img src="logo.png" alt="Logo Ananda Salon" class="w-32 h-32 mb-4 object-contain drop-shadow-xl" id="logo-gambar" onerror="this.style.display='none'; document.getElementById('logo-sementara').style.display='block';">
+            
+            <div class="hidden mb-4 text-gold drop-shadow-lg" id="logo-sementara">
+                <i class="ph ph-flower-lotus text-7xl"></i>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-serif text-white mb-2 leading-tight uppercase tracking-[0.1em] font-bold">
+                ANANDA SALON
+            </h1>
+            
+            <h2 class="text-5xl md:text-7xl font-script text-gold mb-8 capitalize drop-shadow-md">
+                Ananda Éternelle
+            </h2>
+
+            <h3 class="text-gray-300 tracking-[0.3em] text-xs md:text-sm font-semibold mb-6 uppercase border-b border-gray-500 pb-2">
+                Est. 1986 • Bandung
+            </h3>
+            
+            <p class="text-gray-200 text-lg md:text-xl font-light mb-10 italic max-w-2xl">
+                "Kecantikan abadi dengan sentuhan Bali."
+            </p>
+            
+            <a href="#booking" class="inline-block border-2 border-gold text-white hover:bg-gold transition duration-300 px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase shadow-lg">
+                Reservasi
+            </a>
+        </div>
+    </section>
+
+    <!-- Loyalty Banner -->
+    <section class="bg-charcoal text-white py-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 text-9xl text-gold transform translate-x-1/4 -translate-y-1/4">
+            <i class="ph ph-qr-code"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-6">
+                <div class="bg-gold p-4 rounded-full text-white text-4xl shadow-lg">
+                    <i class="ph ph-gift"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-serif text-gold mb-1">Loyalty Program</h3>
+                    <p class="text-gray-300 text-sm">Dapatkan Kupon Diskon Eksklusif setiap 10x reservasi via website</p>
+                </div>
+            </div>
+            <div>
+                <a href="#booking" class="bg-transparent border border-gold text-gold hover:bg-gold hover:text-white px-6 py-2 rounded-full transition text-sm font-semibold tracking-wide">Mulai Reservasi</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-ivory">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 relative">
+                    <img src="foto-salon.jpg" alt="Suasana Salon Klasik" class="bg-gray-300 rounded-t-full rounded-b-lg shadow-2xl object-cover h-[500px] w-full border-4 border-cream flex items-center justify-center text-gray-500 text-sm" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'100%\\\' height=\\\'100%\\\'><rect width=\\\'100%\\\' height=\\\'100%\\\' fill=\\\'%23e5e7eb\\\'/><text x=\\\'50%\\\' y=\\\'50%\\\' font-family=\\\'sans-serif\\\' font-size=\\\'14\\\' fill=\\\'%236b7280\\\' text-anchor=\\\'middle\\\'>foto-salon.jpg belum ada</text></svg>';">
+                    <div class="absolute -bottom-6 -right-6 bg-terracotta text-white p-6 rounded-lg shadow-xl hidden md:block">
+                        <p class="font-serif text-4xl font-bold">35+</p>
+                        <p class="font-sans text-sm tracking-wider uppercase">Tahun Melayani</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-terracotta font-semibold tracking-widest text-sm uppercase mb-2">Tentang Kami</h3>
+                    <h2 class="text-4xl font-serif text-charcoal mb-6 leading-tight">Ikon Kecantikan di Antapani Sejak 1986.</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Didirikan oleh seorang wanita asli Bali, Ananda Salon sangat mengedepankan ketelitian dan seni kecantikan khas Pulau Dewata ke Kota Bandung. Kami percaya bahwa setiap pelanggan adalah bagian dari keluarga.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Selama lebih dari tiga dekade, kami telah menjadi saksi transformasi kecantikan lintas generasi. Memadukan teknik perawatan modern dengan rahasia tradisional, kami memastikan kecantikan Anda memancar dari akar yang sehat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h3 class="text-terracotta font-semibold tracking-widest text-sm uppercase mb-2">Layanan Kami</h3>
+                <h2 class="text-4xl font-serif text-charcoal mb-4">Services</h2>
+                <div class="h-1 w-20 bg-gold mx-auto"></div>
+            </div>
+
+            <!-- Grid 3 kolom -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Hair Care -->
+                <div class="bg-ivory p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center gap-4 mb-8">
+                        <i class="ph ph-scissors text-4xl text-terracotta"></i>
+                        <h3 class="text-2xl font-serif">Hair Care & Styling</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Haircut (Man / Woman)</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Coloring</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Hair Spa</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Hair Extension</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Creambath</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Smoothing</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Curling</h4></li>
+                    </ul>
+                </div>
+
+                <!-- Makeup & Bridal -->
+                <div class="bg-ivory p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center gap-4 mb-8">
+                        <i class="ph ph-sparkle text-4xl text-terracotta"></i>
+                        <h3 class="text-2xl font-serif">Makeup & Bridal</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Makeup Biasa</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Bridal / Rias Pengantin</h4></li>
+                        <li class="border-b border-gray-200 pb-2">
+                            <h4 class="font-semibold text-charcoal">Home Service</h4>
+                            <p class="text-xs text-gray-500 italic mt-1">Area Bandung</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Skin & Facial Care -->
+                <div class="bg-ivory p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition duration-300">
+                    <div class="flex items-center gap-4 mb-8">
+                        <i class="ph ph-flower-lotus text-4xl text-terracotta"></i>
+                        <h3 class="text-2xl font-serif">Skin & Facial Care</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="border-b border-gray-200 pb-2">
+                            <h4 class="font-semibold text-charcoal">Lulur</h4>
+                            <p class="text-xs text-gray-500 italic mt-1">Khusus wanita</p>
+                        </li>
+                        <li class="border-b border-gray-200 pb-2">
+                            <h4 class="font-semibold text-charcoal">Body Bleaching</h4>
+                            <p class="text-xs text-gray-500 italic mt-1">Khusus wanita</p>
+                        </li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Setrika Wajah</h4></li>
+                        <li class="border-b border-gray-200 pb-2"><h4 class="font-semibold text-charcoal">Totok Wajah</h4></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 bg-terracotta text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif mb-4">Reservasi</h2>
+                <p class="text-cream opacity-80 font-light">Pastikan slot Anda aman tanpa harus menunggu lama di salon.</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-2xl text-charcoal">
+                <form id="bookingForm" class="space-y-6">
+                    <!-- Baris 1: Nama & WA -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nama</label>
+                            <input type="text" id="formNama" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nomor WhatsApp</label>
+                            <input type="tel" id="formWa" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta" placeholder="Contoh: 08123456789">
+                        </div>
+                    </div>
+
+                    <!-- Baris 2: Tanggal & Jam -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Tanggal Reservasi</label>
+                            <input type="date" id="formTanggal" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Jam Kedatangan</label>
+                            <input type="time" id="formJam" required min="09:00" max="19:00" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+                    </div>
+                    
+                    <!-- Baris 3: Layanan -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Pilih Layanan Utama</label>
+                        <select id="formLayanan" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta bg-white">
+                            <option value="" disabled selected>-- Pilih Layanan --</option>
+                            <option value="Hair Care & Styling">Hair Care & Styling</option>
+                            <option value="Makeup & Bridal">Makeup & Bridal</option>
+                            <option value="Skin & Facial Care">Skin & Facial Care</option>
+                        </select>
+                    </div>
+
+                    <!-- Baris 4: Catatan -->
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Catatan Tambahan (Opsional)</label>
+                        <textarea id="formCatatan" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-terracotta bg-white" placeholder="Cth: Ingin potong model layer, atau butuh layanan lulur..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gold hover:bg-yellow-600 text-white font-bold py-4 rounded-lg transition duration-300 shadow-md">
+                        KONFIRMASI BOOKING
+                    </button>
+                </form>
+                
+                <div id="bookingSuccess" class="hidden mt-6 bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-lg flex items-center gap-4">
+                    <i class="ph ph-check-circle text-3xl"></i>
+                    <div>
+                        <p class="font-bold">Reservasi Berhasil Diajukan!</p>
+                        <p class="text-sm">Admin kami akan mengonfirmasi jadwal Anda via WhatsApp sesaat lagi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-ivory py-16 border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="flex items-baseline gap-3 mb-6">
+                    <h2 class="text-3xl font-serif text-white tracking-widest font-bold uppercase">ANANDA</h2>
+                    <h3 class="text-4xl font-script text-gold">Éternelle</h3>
+                </div>
+                <p class="text-sm text-gray-400 leading-relaxed pr-4">
+                    Salon kecantikan legendaris di Antapani sejak 1986. Merawat mahkota dan kecantikan Anda dengan dedikasi dan sentuhan personal.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-gold uppercase tracking-wider mb-6">Kontak & Lokasi</h4>
+                <ul class="text-sm text-gray-400 space-y-5">
+                    <li class="flex items-start gap-3">
+                        <i class="ph ph-map-pin text-terracotta text-xl mt-0.5"></i>
+                        <a href="https://maps.app.goo.gl/eaeEDRCUVvHpprq39" target="_blank" class="hover:text-gold transition leading-relaxed">
+                            Jl. Kuningan Raya No.31, Antapani Tengah, Kota Bandung 40291
+                        </a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-whatsapp-logo text-terracotta text-xl"></i>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-gold transition">
+                            +62 812-3456-7890
+                        </a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph ph-clock text-terracotta text-xl"></i>
+                        <span>Buka Setiap Hari: 09:00 - 19:00 WIB</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-gold uppercase tracking-wider mb-6">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="bg-gray-800 hover:bg-terracotta text-white p-3 rounded-full transition flex items-center justify-center w-12 h-12 shadow-md"><i class="ph ph-instagram-logo text-2xl"></i></a>
+                    </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <p>&copy; 2026 Ananda Salon. All rights reserved. | <button id="openAdminBtn" class="hover:text-gold transition font-bold underline">Login Admin Panel</button></p>
+            <p class="mt-2 md:mt-0">Designed for Ananda Salon</p>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Widget -->
+    <!-- Tombol Chatbot diubah menjadi warna HIJAU -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chatbotBtn" class="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-2xl transition transform hover:scale-110 flex items-center justify-center">
+            <i class="ph ph-chat-circle-dots text-3xl"></i>
+        </button>
+
+        <div id="chatWindow" class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col transition-all duration-300 origin-bottom-right transform scale-95 opacity-0">
+            <div class="bg-green-600 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white p-2 rounded-full text-green-600"><i class="ph ph-sparkle text-xl"></i></div>
+                    <div>
+                        <h4 class="font-bold font-serif">Ananda Assistant</h4>
+                        <p class="text-xs text-green-100 flex items-center gap-1"><span class="h-2 w-2 bg-green-300 rounded-full inline-block"></span> Online</p>
+                    </div>
+                </div>
+                <button id="closeChatBtn" class="text-white hover:text-gray-200"><i class="ph ph-x text-xl"></i></button>
+            </div>
+            
+            <div id="chat-messages" class="flex-1 h-80 overflow-y-auto p-4 bg-ivory space-y-4">
+                <div class="flex justify-start">
+                    <div class="bg-cream text-charcoal rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 max-w-[80%] text-sm shadow-sm border border-gray-100">
+                        Om Swastiastu! 🙏 Halo, saya asisten virtual Ananda Salon. Silakan ketik 'harga', 'lokasi', atau 'kupon' untuk info cepat.
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-white border-t border-gray-200 flex gap-2">
+                <input type="text" id="chatInput" class="flex-1 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-green-600" placeholder="Ketik pesan...">
+                <button id="sendChatBtn" class="bg-green-600 hover:bg-green-700 text-white rounded-full h-10 w-10 flex items-center justify-center"><i class="ph ph-paper-plane-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div> <!-- Tutup pembungkus #main-website -->
+
+<!-- PANEL ADMIN & DATABASE UI -->
+<div id="admin-panel" class="hidden min-h-screen bg-gray-100 p-8 z-50 relative">
+    <div class="max-w-[90rem] mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-3xl font-serif text-charcoal font-bold">Admin Dashboard</h2>
+                <p class="text-gray-500">Kelola Reservasi & Database Ananda Salon</p>
+            </div>
+            <button id="closeAdminBtn" class="bg-terracotta text-white px-6 py-2 rounded-lg hover:bg-red-800 transition shadow flex items-center gap-2"><i class="ph ph-sign-out"></i> Tutup & Kembali ke Website</button>
+        </div>
+        
+        <!-- Tabel Database -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+            <div class="p-6 bg-charcoal text-gold font-bold flex justify-between items-center">
+                <h3>Daftar Reservasi Masuk (Live/Mock Database)</h3>
+                <span id="totalBookings" class="bg-gold text-charcoal px-3 py-1 rounded-full text-xs">Memuat...</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-600 border-b border-gray-200 text-sm">
+                            <th class="p-4 font-semibold w-24">Tgl Input</th>
+                            <th class="p-4 font-semibold text-terracotta">Jadwal Kedatangan</th>
+                            <th class="p-4 font-semibold">Nama Pelanggan</th>
+                            <th class="p-4 font-semibold">Layanan & Catatan</th>
+                            <th class="p-4 font-semibold">Status</th>
+                            <th class="p-4 font-semibold w-48">Aksi Konfirmasi & Kupon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody" class="divide-y divide-gray-200 text-sm">
+                        <tr><td colspan="6" class="p-4 text-center text-gray-500">Mengambil data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Login Admin -->
+<div id="adminLoginModal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-[100] flex items-center justify-center">
+    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-sm w-full">
+        <div class="text-center mb-6">
+            <i class="ph ph-lock-key text-4xl text-terracotta mb-2"></i>
+            <h3 class="text-2xl font-serif text-charcoal">Login Admin</h3>
+        </div>
+        <input type="password" id="adminPassword" placeholder="Masukkan Password" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-2 focus:ring-2 focus:ring-terracotta outline-none">
+        <p class="text-xs text-gray-500 mb-6 text-center italic">Hint untuk presentasi: ketik "ananda1986"</p>
+        <div class="flex gap-4">
+            <button id="cancelLoginBtn" class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition font-semibold">Batal</button>
+            <button id="submitLoginBtn" class="flex-1 bg-terracotta text-white py-2 rounded-lg hover:bg-red-800 transition font-semibold">Login</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal QR Code Generator -->
+<div id="qrCodeModal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-[200] flex items-center justify-center">
+    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gold"></div>
+        <i class="ph ph-confetti text-6xl text-terracotta mb-4"></i>
+        <h3 class="text-2xl font-serif text-charcoal mb-2">Pelanggan Setia!</h3>
+        <p class="text-sm text-gray-600 mb-6" id="qrMessage">Sistem berhasil meng-generate Kupon QR Code.</p>
+        
+        <div class="flex justify-center mb-6">
+            <img id="qrCodeImage" src="" alt="QR Code" class="border-4 border-gray-100 rounded-lg shadow-sm">
+        </div>
+        
+        <div class="flex flex-col gap-3">
+            <a href="#" id="sendWaBtn" target="_blank" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-bold shadow flex items-center justify-center gap-2 transition">
+                <i class="ph ph-whatsapp-logo text-xl"></i> Kirim Kupon via WhatsApp
+            </a>
+            <button id="closeQrModalBtn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-bold transition">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT 1: LOGIKA UI UTAMA (Dipisah agar Chatbot selalu bisa dibuka) -->
+<script>
+    // --- 1. NAVBAR SCROLL EFFECT ---
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        const logo = document.getElementById('nav-logo');
+        const link1 = document.getElementById('nav-link-1');
+        const link2 = document.getElementById('nav-link-2');
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-white', 'shadow-md');
+            logo.classList.replace('text-white', 'text-terracotta');
+            link1.classList.replace('text-white', 'text-charcoal');
+            link2.classList.replace('text-white', 'text-charcoal');
+        } else {
+            navbar.classList.remove('bg-white', 'shadow-md');
+            logo.classList.replace('text-terracotta', 'text-white');
+            link1.classList.replace('text-charcoal', 'text-white');
+            link2.classList.replace('text-charcoal', 'text-white');
+        }
+    });
+
+    // --- 2. CHATBOT LOGIC ---
+    const chatWindow = document.getElementById('chatWindow');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chat-messages');
+
+    function toggleChat() {
+        if (chatWindow.classList.contains('hidden')) {
+            chatWindow.classList.remove('hidden');
+            setTimeout(() => {
+                chatWindow.classList.remove('scale-95', 'opacity-0');
+                chatWindow.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        } else {
+            chatWindow.classList.remove('scale-100', 'opacity-100');
+            chatWindow.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => chatWindow.classList.add('hidden'), 300);
+        }
+    }
+    
+    document.getElementById('chatbotBtn').addEventListener('click', toggleChat);
+    document.getElementById('closeChatBtn').addEventListener('click', toggleChat);
+
+    function getBotResponse(input) {
+        const txt = input.toLowerCase();
+        if (txt.includes('harga')) return "Untuk informasi harga layanan, silakan hubungi admin kami via WhatsApp ya! ✨";
+        if (txt.includes('lokasi')) return "Kami ada di Jl. Kuningan Raya No.31, Antapani Tengah, Bandung. 📍";
+        if (txt.includes('kupon') || txt.includes('promo')) return "Setiap 10x booking via website, Anda akan mendapatkan QR Code Kupon Diskon eksklusif! 🎁";
+        return "Halo! Silakan hubungi admin kami via WA untuk info lebih detail ya. 🙏";
+    }
+
+    function sendMessage() {
+        if (!chatInput.value.trim()) return;
+        const msg = chatInput.value;
+        chatInput.value = '';
+        chatMessages.insertAdjacentHTML('beforeend', `<div class="flex justify-end"><div class="bg-green-600 text-white rounded-tl-xl rounded-bl-xl rounded-br-xl p-3 max-w-[80%] text-sm shadow-sm">${msg}</div></div>`);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatMessages.insertAdjacentHTML('beforeend', `<div id="typing" class="flex justify-start"><div class="bg-cream text-gray-500 rounded p-3 text-sm italic">Mengetik...</div></div>`);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        setTimeout(() => {
+            document.getElementById('typing').remove();
+            chatMessages.insertAdjacentHTML('beforeend', `<div class="flex justify-start"><div class="bg-cream text-charcoal rounded-tr-xl rounded-br-xl rounded-bl-xl p-3 max-w-[80%] text-sm shadow-sm border border-gray-100">${getBotResponse(msg)}</div></div>`);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+    }
+    document.getElementById('sendChatBtn').addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+    // --- 3. MODAL ADMIN UI ---
+    const mainWebsite = document.getElementById('main-website');
+    const adminPanel = document.getElementById('admin-panel');
+    const loginModal = document.getElementById('adminLoginModal');
+    
+    document.getElementById('openAdminBtn').addEventListener('click', () => loginModal.classList.remove('hidden'));
+    document.getElementById('cancelLoginBtn').addEventListener('click', () => {
+        loginModal.classList.add('hidden');
+        document.getElementById('adminPassword').value = '';
+    });
+    document.getElementById('submitLoginBtn').addEventListener('click', () => {
+        if(document.getElementById('adminPassword').value === 'ananda1986') {
+            loginModal.classList.add('hidden');
+            mainWebsite.classList.add('hidden');
+            adminPanel.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        } else {
+            alert("Password Salah! (Hint: ananda1986)");
+        }
+    });
+    document.getElementById('closeAdminBtn').addEventListener('click', () => {
+        adminPanel.classList.add('hidden');
+        mainWebsite.classList.remove('hidden');
+        document.getElementById('adminPassword').value = '';
+    });
+</script>
+
+<!-- SCRIPT 2: LOGIKA DATABASE FIREBASE -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+    import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+    let db, auth, bookingsRef;
+    let isMockMode = false;
+    let mockBookingsData = []; 
+    let allBookingsData = [];  
+    
+    const firebaseConfig = {
+  apiKey: "AIzaSyBMHIVoM4y5JOyjAacWFDWNb93obElwGdw",
+  authDomain: "ananda-salon-b53e3.firebaseapp.com",
+  databaseURL: "https://ananda-salon-b53e3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ananda-salon-b53e3",
+  storageBucket: "ananda-salon-b53e3.firebasestorage.app",
+  messagingSenderId: "633924845111",
+  appId: "1:633924845111:web:1729ef43c8d932139989b2"
+};
+
+    const initFirebase = async () => {
+        if (!firebaseConfigStr) {
+            isMockMode = true;
+            renderAdminTable(); 
+            return;
+        }
+        try {
+            const firebaseConfig = JSON.parse(firebaseConfigStr);
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            bookingsRef = collection(db, 'artifacts', appId, 'public', 'data', 'bookings');
+
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                await signInWithCustomToken(auth, __initial_auth_token);
+            } else {
+                await signInAnonymously(auth);
+            }
+            onAuthStateChanged(auth, (user) => { if (user) listenToFirebaseBookings(); });
+        } catch (error) {
+            isMockMode = true;
+            renderAdminTable();
+        }
+    };
+    initFirebase();
+
+    // --- SUBMIT BOOKING ---
+    document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-spinner animate-spin text-xl inline-block mr-2"></i> Memproses...';
+        
+        const newBooking = {
+            nama: document.getElementById('formNama').value,
+            wa: document.getElementById('formWa').value,
+            tglReservasi: document.getElementById('formTanggal').value,
+            jamReservasi: document.getElementById('formJam').value,
+            layanan: document.getElementById('formLayanan').value,
+            catatan: document.getElementById('formCatatan').value || '-',
+            tanggalInput: new Date().toLocaleDateString('id-ID'),
+            timestamp: Date.now(),
+            status: 'Menunggu'
+        };
+
+        try {
+            if (isMockMode) {
+                newBooking.id = Date.now().toString();
+                mockBookingsData.push(newBooking);
+                renderAdminTable();
+            } else {
+                await addDoc(bookingsRef, newBooking);
+            }
+            btn.innerHTML = originalText;
+            e.target.reset();
+            document.getElementById('bookingSuccess').classList.remove('hidden');
+            setTimeout(() => document.getElementById('bookingSuccess').classList.add('hidden'), 5000);
+        } catch (err) {
+            console.error(err);
+            btn.innerHTML = originalText;
+            alert("Maaf, terjadi kesalahan saat menyimpan data.");
+        }
+    });
+
+    function listenToFirebaseBookings() {
+        if(!db) return;
+        onSnapshot(bookingsRef, (snapshot) => {
+            mockBookingsData = []; 
+            snapshot.forEach(doc => mockBookingsData.push({ id: doc.id, ...doc.data() }));
+            renderAdminTable();
+        }, (error) => console.error("Database error:", error));
+    }
+
+    function formatDateIndo(dateStr) {
+        if(!dateStr) return "-";
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateStr).toLocaleDateString('id-ID', options);
+    }
+
+    function renderAdminTable() {
+        const tbody = document.getElementById('adminTableBody');
+        tbody.innerHTML = '';
+        allBookingsData = [...mockBookingsData];
+        allBookingsData.sort((a, b) => b.timestamp - a.timestamp);
+        
+        if (allBookingsData.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-gray-500">Belum ada reservasi masuk.</td></tr>';
+        }
+
+        allBookingsData.forEach(data => {
+            const isSelesai = data.status === 'Selesai';
+            const statusUI = isSelesai ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800';
+            
+            let rawWaNumber = data.wa.replace(/\D/g, ''); 
+            if(rawWaNumber.startsWith('0')) rawWaNumber = '62' + rawWaNumber.substring(1); 
+            
+            const waText = encodeURIComponent(`Halo Kak ${data.nama}, kami dari Ananda Salon ingin mengonfirmasi jadwal reservasi untuk layanan *${data.layanan}* pada:\n\nHari/Tanggal: ${formatDateIndo(data.tglReservasi)}\nJam: ${data.jamReservasi} WIB\n\nApakah jadwal ini sudah sesuai? Terima kasih! ✨`);
+            const waLink = `https://wa.me/${rawWaNumber}?text=${waText}`;
+
+            let actionHTML = `<div class="flex flex-col gap-2">`;
+            actionHTML += `<a href="${waLink}" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded shadow-sm transition flex items-center gap-1 w-max"><i class="ph ph-whatsapp-logo"></i> Konfirmasi via WA</a>`;
+            
+            if (!isSelesai) {
+                actionHTML += `<button data-id="${data.id}" class="btn-selesai bg-terracotta hover:bg-red-800 text-white px-3 py-1.5 rounded shadow-sm transition flex items-center gap-1 w-max"><i class="ph ph-check-circle"></i> Tandai Selesai</button>`;
+            } else {
+                actionHTML += `<span class="text-green-600 font-semibold flex items-center gap-1 text-sm"><i class="ph ph-seal-check text-lg"></i> Kunjungan Tercatat</span>`;
+                if (data.kupon) {
+                    actionHTML += `<button data-nama="${data.nama}" data-wa="${data.wa}" data-kupon="${data.kupon}" class="btn-lihat-kupon bg-gold hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs shadow transition flex items-center gap-1 w-max"><i class="ph ph-qr-code"></i> Lihat Kupon</button>`;
+                }
+            }
+            actionHTML += `</div>`;
+
+            const tr = document.createElement('tr');
+            tr.className = 'border-b border-gray-100 hover:bg-gray-50 transition';
+            tr.innerHTML = `
+                <td class="p-4 text-xs text-gray-500">${data.tanggalInput}</td>
+                <td class="p-4">
+                    <span class="font-bold text-charcoal block">${formatDateIndo(data.tglReservasi)}</span>
+                    <span class="text-terracotta font-semibold text-sm flex items-center gap-1 mt-1"><i class="ph ph-clock"></i> ${data.jamReservasi} WIB</span>
+                </td>
+                <td class="p-4">
+                    <span class="font-semibold text-charcoal block">${data.nama}</span>
+                    <span class="text-xs text-gray-500">${data.wa}</span>
+                </td>
+                <td class="p-4">
+                    <span class="font-semibold block capitalize">${data.layanan}</span>
+                    <span class="text-xs text-gray-600 italic block mt-1 break-words">"${data.catatan}"</span>
+                </td>
+                <td class="p-4"><span class="px-3 py-1 rounded-full text-xs font-bold ${statusUI}">${data.status}</span></td>
+                <td class="p-4 align-top">${actionHTML}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        document.getElementById('totalBookings').innerText = `${allBookingsData.length} Total Reservasi`;
+
+        document.querySelectorAll('.btn-selesai').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const targetBtn = e.currentTarget;
+                const docId = targetBtn.getAttribute('data-id');
+                targetBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Proses...';
+                
+                if (isMockMode) {
+                    const item = mockBookingsData.find(b => b.id === docId);
+                    if(item) item.status = 'Selesai';
+                    renderAdminTable();
+                    checkLoyaltyProgram(docId); 
+                } else {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', docId);
+                        await updateDoc(docRef, { status: 'Selesai' });
+                        checkLoyaltyProgram(docId);
+                    } catch (err) {
+                        alert("Gagal mengupdate database.");
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-lihat-kupon').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const btnEl = e.currentTarget;
+                showKuponModal(btnEl.dataset.nama, btnEl.dataset.wa, btnEl.dataset.kupon, "Spesial");
+            });
+        });
+    }
+
+    const qrCodeModal = document.getElementById('qrCodeModal');
+    const qrCodeImage = document.getElementById('qrCodeImage');
+    const sendWaBtn = document.getElementById('sendWaBtn');
+    const closeQrModalBtn = document.getElementById('closeQrModalBtn');
+
+    closeQrModalBtn.addEventListener('click', () => qrCodeModal.classList.add('hidden'));
+
+    function showKuponModal(nama, nomorWA, kodeUnik, kunjunganText) {
+        let rawWaNumber = nomorWA.replace(/\D/g, '');
+        if(rawWaNumber.startsWith('0')) rawWaNumber = '62' + rawWaNumber.substring(1);
+        
+        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${kodeUnik}`;
+        document.getElementById('qrMessage').innerHTML = `Pelanggan atas nama <b>${nama}</b> (WA: ${nomorWA}) mendapatkan Kupon Diskon.`;
+        qrCodeImage.src = qrApiUrl;
+        
+        const waMessage = encodeURIComponent(`Halo Kak ${nama}! 🎉\n\nTerima kasih telah menjadi pelanggan setia Ananda Salon. Kami memberikan Kupon Spesial untuk Kakak!\n\nTunjukkan Kode QR ini atau sebutkan kode: *${kodeUnik}* pada kedatangan berikutnya untuk mendapatkan Diskon Eksklusif.\n\nSalam cantik, Ananda Éternelle ✨`);
+        sendWaBtn.href = `https://wa.me/${rawWaNumber}?text=${waMessage}`;
+        
+        qrCodeModal.classList.remove('hidden');
+    }
+
+    async function checkLoyaltyProgram(docId) {
+        const currentBooking = allBookingsData.find(b => b.id === docId);
+        if (!currentBooking) return;
+        
+        const nomorWA = currentBooking.wa;
+        const totalKunjungan = allBookingsData.filter(b => b.wa === nomorWA && b.status === 'Selesai').length;
+        
+        if (totalKunjungan > 0 && totalKunjungan % 10 === 0) {
+            let kodeUnik = currentBooking.kupon;
+            if (!kodeUnik) {
+                kodeUnik = "KUPON-ANANDA-" + Math.floor(Math.random() * 10000);
+                if (isMockMode) {
+                    currentBooking.kupon = kodeUnik; 
+                    renderAdminTable(); 
+                } else {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', docId);
+                        await updateDoc(docRef, { kupon: kodeUnik }); 
+                        currentBooking.kupon = kodeUnik;
+                        renderAdminTable();
+                    } catch(err) {
+                        console.error("Gagal menyimpan Kupon", err);
+                    }
+                }
+            }
+            setTimeout(() => { showKuponModal(currentBooking.nama, nomorWA, kodeUnik, totalKunjungan); }, 500); 
+        }
+    }
+</script>
+</body>
+</html>
