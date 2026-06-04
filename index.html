@@ -64,11 +64,17 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-xl font-serif text-white tracking-widest font-bold" id="nav-logo">ANANDA SALON</a>
                 </div>
-                <div class="hidden md:flex space-x-8 items-center">
+                <!-- Menu Kanan Atas -->
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
                     <a href="#about" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-1">ABOUT US</a>
                     <a href="#services" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-2">LAYANAN</a>
                     <a href="#gallery" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-3">GALERI</a>
-                    <a href="#booking" class="bg-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition font-semibold text-sm tracking-wide shadow-lg">RESERVASI</a>
+                    
+                    <!-- Tambahan Tombol Lookbook & Stylists -->
+                    <a href="#lookbook" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-4">LOOKBOOK</a>
+                    <a href="#stylists" class="text-white hover:text-gold transition font-medium text-sm tracking-wide" id="nav-link-5">STYLISTS</a>
+                    
+                    <a href="#booking" class="bg-gold hover:bg-yellow-600 text-white px-6 py-2 rounded-full transition font-semibold text-sm tracking-wide shadow-lg ml-2">RESERVASI</a>
                 </div>
             </div>
         </div>
@@ -226,9 +232,10 @@
 
     <section id="gallery" class="py-24 bg-ivory">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <h3 class="text-terracotta font-semibold tracking-widest text-sm uppercase mb-2">Portofolio & Tim Kami</h3>
-                <h2 class="text-4xl font-serif text-charcoal mb-4">Gallery & Stylists</h2>
+                <h2 class="text-4xl font-serif text-charcoal mb-4">Produk & Gallery</h2>
                 <div class="h-1 w-20 bg-gold mx-auto"></div>
             </div>
 
@@ -258,34 +265,78 @@
 
             </div>
 
-            <h4 class="font-serif text-2xl mb-6 text-center text-charcoal">Rating Stylist Terfavorit</h4>
-            <p class="text-center text-sm text-gray-500 mb-8 italic">Klik pada nama stylist untuk memberikan ulasan Anda.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
-                
-                <div onclick="bukaModalStylist('Yani')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition duration-300 w-full md:w-80">
-                    <div class="w-24 h-24 mb-5 overflow-hidden rounded-full shadow-inner border-4 border-cream">
-                        <img src="yani.jpg" class="w-full h-full object-cover" alt="Foto Yani">
-                    </div>
-                    <h5 class="font-bold text-xl text-charcoal mb-1">Yani</h5>
-                    <div class="flex text-gold mb-3 text-lg">
-                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-                    </div>
-                    <p class="text-sm text-gray-500 leading-relaxed">"Potongan layernya presisi banget, ramah, dan teliti. Selalu puas sama hasilnya!"<br><span class="font-bold text-terracotta mt-2 block">★ 5/5</span></p>
+            <div id="lookbook" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-16 scroll-mt-24">
+                <h4 class="font-serif text-3xl mb-2 text-charcoal text-center">Inspirasi Gaya & Lookbook</h4>
+                <p class="text-center text-sm text-gray-500 mb-8 italic">Temukan referensi potongan dan warna yang paling cocok untukmu!</p>
+                <div class="flex justify-center mb-8">
+    <button onclick="bukaARFilter()" class="bg-gradient-to-r from-terracotta to-red-800 hover:from-red-800 hover:to-terracotta text-white px-8 py-3 rounded-full font-bold shadow-lg transform hover:scale-105 transition flex items-center gap-2">
+        <i class="ph ph-camera text-xl"></i> Coba Virtual Try-On AR
+    </button>
+</div>
+                <div class="flex flex-wrap justify-center gap-3 mb-8" id="filterContainer">
+                    <button class="filter-btn bg-terracotta text-white shadow-md px-6 py-2 rounded-full text-sm font-bold transition" data-filter="all">Semua</button>
+                    <button class="filter-btn bg-cream text-charcoal hover:bg-gold hover:text-white px-6 py-2 rounded-full text-sm font-bold transition" data-filter="pendek">Pendek</button>
+                    <button class="filter-btn bg-cream text-charcoal hover:bg-gold hover:text-white px-6 py-2 rounded-full text-sm font-bold transition" data-filter="panjang">Panjang</button>
+                    <button class="filter-btn bg-cream text-charcoal hover:bg-gold hover:text-white px-6 py-2 rounded-full text-sm font-bold transition" data-filter="pria">Pria</button>
                 </div>
 
-                <div onclick="bukaModalStylist('Ni Nyoman')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition duration-300 w-full md:w-80">
-                    <div class="w-24 h-24 mb-5 overflow-hidden rounded-full shadow-inner border-4 border-cream">
-                        <img src="nyoman.jpg" class="w-full h-full object-cover" alt="Foto Ni Nyoman">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="galleryGrid">
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pendek">
+                        <img src="1_bob_w.jpeg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pendek">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Bob Style</span></div>
                     </div>
-                    <h5 class="font-bold text-xl text-charcoal mb-1">Ni Nyoman</h5>
-                    <div class="flex text-gold mb-3 text-lg">
-                        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pendek">
+                        <img src="2_pixie_w.webp" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pendek">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Pixie Style</span></div>
                     </div>
-                    <p class="text-sm text-gray-500 leading-relaxed">"Pijatan facial dan totok wajahnya bikin rileks banget, produk lulurnya juara!"<br><span class="font-bold text-terracotta mt-2 block">★ 5/5</span></p>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pendek">
+                        <img src="7_shaggy_w.webp" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pendek">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Shaggy Wanita</span></div>
+                    </div>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pria">
+                        <img src="8_wc_p.jpg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pria">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Wolfcut / Fade</span></div>
+                    </div>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="panjang">
+                        <img src="3_lc_w.jpg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Panjang">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Layered Cut</span></div>
+                    </div>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="panjang">
+                        <img src="4_blunt_w.webp" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Panjang">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Blunt Cut</span></div>
+                    </div>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pria">
+                        <img src="5_mullet_p.jpg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pria">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Mullet</span></div>
+                    </div>
+                    <div class="gallery-item relative group overflow-hidden rounded-xl shadow-sm" data-category="pria">
+                        <img src="6_shaggy_p.jpg" class="w-full aspect-square object-cover transition duration-500 group-hover:scale-110" alt="Pria">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"><span class="text-white font-bold tracking-wider text-sm">Shaggy Pria</span></div>
+                    </div>
                 </div>
-
             </div>
+
+            <h4 id="stylists" class="font-serif text-2xl mb-6 text-center text-charcoal scroll-mt-24">Rating Stylist Terfavorit</h4>
+            <p class="text-center text-sm text-gray-500 mb-8 italic">Klik pada nama stylist untuk memberikan ulasan Anda.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 max-w-4xl mx-auto">
+                <div onclick="bukaModalStylist('Tante Ayu')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition duration-300 w-full md:w-80">
+                    <div class="w-24 h-24 mb-5 overflow-hidden rounded-full shadow-inner border-4 border-cream">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Foto Tante Ayu">
+                    </div>
+                    <h5 class="font-bold text-xl text-charcoal mb-1">Tante Ayu</h5>
+                    <div class="flex text-gold mb-3 text-lg"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                    <p class="text-sm text-gray-500 leading-relaxed">"Potongan layernya presisi banget, ramah, dan teliti. Selalu puas sama hasilnya!"<br><span class="font-bold text-terracotta mt-2 block">★ 4.9/5</span></p>
+                </div>
+                <div onclick="bukaModalStylist('Mbak Rini')" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition duration-300 w-full md:w-80">
+                    <div class="w-24 h-24 mb-5 overflow-hidden rounded-full shadow-inner border-4 border-cream">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Foto Mbak Rini">
+                    </div>
+                    <h5 class="font-bold text-xl text-charcoal mb-1">Mbak Rini</h5>
+                    <div class="flex text-gold mb-3 text-lg"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i></div>
+                    <p class="text-sm text-gray-500 leading-relaxed">"Pijatan facial dan totok wajahnya bikin rileks banget, produk lulurnya juara!"<br><span class="font-bold text-terracotta mt-2 block">★ 4.8/5</span></p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -473,7 +524,7 @@
         <div class="flex justify-between items-center mb-8">
             <div>
                 <h2 class="text-3xl font-serif text-charcoal font-bold">Admin Dashboard</h2>
-                <p class="text-gray-500">Simulasi Tabel untuk Presentasi (Data asli masuk ke Google Sheets)</p>
+                <p class="text-gray-500">Data diambil/masuk ke Google Sheets</p>
             </div>
             <button id="closeAdminBtn" class="bg-terracotta text-white px-6 py-2 rounded-lg hover:bg-red-800 transition shadow flex items-center gap-2"><i class="ph ph-sign-out"></i> Tutup & Kembali ke Website</button>
         </div>
@@ -597,6 +648,58 @@
     </div>
 </div>
 
+<div id="arFilterModal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-[400] flex items-center justify-center backdrop-blur-sm">
+    <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full relative border-t-4 border-terracotta max-h-[95vh] overflow-y-auto overflow-x-hidden">
+        <button onclick="tutupARFilter()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 z-50 transition"><i class="ph ph-x text-2xl"></i></button>
+        
+        <div class="text-center mb-4 mt-2">
+            <h3 class="text-2xl font-serif text-charcoal mb-1">AR Virtual Try-On</h3>
+            <p class="text-xs text-gray-500">Wig akan otomatis mengikuti wajahmu!</p>
+        </div>
+        
+        <div class="relative w-full h-[350px] bg-black rounded-xl shadow-inner mb-4 flex items-center justify-center">
+            <p id="arLoadingText" class="absolute text-gold font-bold z-20 animate-pulse text-sm"></p>
+            <video id="webcamVideo" class="absolute w-full h-full object-contain transform -scale-x-100 rounded-xl" autoplay playsinline></video>
+            
+            <img id="hairOverlay" src="" class="absolute top-0 left-0 transition-opacity duration-100 pointer-events-none" style="display:none; z-index: 10;" alt="Hair Filter">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 mb-3">
+            <button onclick="ubahFilterRambut('rambut-bob.png')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Bob</button>
+            <button onclick="ubahFilterRambut('rambut-pixie.webp')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Pixie</button>
+            <button onclick="ubahFilterRambut('rambut-panjang.webp')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Panjang</button> 
+            <button onclick="ubahFilterRambut('rambut-mullet.webp')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Mullet</button>
+            <button onclick="ubahFilterRambut('rambut-shaggy-p.webp')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Shaggy</button>
+            <button onclick="ubahFilterRambut('rambut-wc.webp')" class="bg-cream text-charcoal px-3 py-2 rounded-lg text-xs font-bold hover:bg-gold transition shadow-sm border border-gray-200">💇‍♀️ Wolfcut</button>
+        </div>
+        <div class="mt-4 mb-2 p-3 bg-cream rounded-xl border border-gray-200 space-y-3">
+            <div>
+                <label class="block text-[11px] text-gray-600 font-bold mb-1 text-center flex items-center justify-center gap-1">
+                    <i class="ph ph-arrows-out-line"></i>Sesuaikan Ukuran
+                </label>
+                <div class="flex items-center gap-2">
+                    <i class="ph ph-minus text-gray-400 text-xs"></i>
+                    <input type="range" id="hairScaleSlider" min="1.5" max="4.0" step="0.05" value="2.2" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-terracotta">
+                    <i class="ph ph-plus text-gray-400 text-xs"></i>
+                </div>
+            </div>
+            <div>
+                <label class="block text-[11px] text-gray-600 font-bold mb-1 text-center flex items-center justify-center gap-1">
+                    <i class="ph ph-arrows-down-up"></i>Sesuaikan Posisi
+                </label>
+                <div class="flex items-center gap-2">
+                    <i class="ph ph-arrow-down text-gray-400 text-xs"></i>
+                    <input type="range" id="hairYOffsetSlider" min="0.3" max="1.8" step="0.05" value="0.85" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-terracotta">
+                    <i class="ph ph-arrow-up text-gray-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <button onclick="clearFilterRambut()" class="w-full bg-gray-200 text-charcoal px-4 py-2 rounded-lg text-xs font-bold hover:bg-gray-300 transition">Hapus Filter</button>
+        </div>
+    </div>
+</div>
+
 <!-- SCRIPT 1: LOGIKA UI UTAMA -->
 <script>
     window.addEventListener('scroll', () => {
@@ -605,18 +708,25 @@
         const link1 = document.getElementById('nav-link-1');
         const link2 = document.getElementById('nav-link-2');
         const link3 = document.getElementById('nav-link-3');
+        const link4 = document.getElementById('nav-link-4'); // Tombol Lookbook
+        const link5 = document.getElementById('nav-link-5'); // Tombol Stylists
+
         if (window.scrollY > 50) {
             navbar.classList.add('bg-white', 'shadow-md');
             logo.classList.replace('text-white', 'text-terracotta');
             link1.classList.replace('text-white', 'text-charcoal');
             link2.classList.replace('text-white', 'text-charcoal');
             link3.classList.replace('text-white', 'text-charcoal');
+            link4.classList.replace('text-white', 'text-charcoal');
+            link5.classList.replace('text-white', 'text-charcoal');
         } else {
             navbar.classList.remove('bg-white', 'shadow-md');
             logo.classList.replace('text-terracotta', 'text-white');
             link1.classList.replace('text-charcoal', 'text-white');
             link2.classList.replace('text-charcoal', 'text-white');
             link3.classList.replace('text-charcoal', 'text-white');
+            link4.classList.replace('text-charcoal', 'text-white');
+            link5.classList.replace('text-charcoal', 'text-white');
         }
     });
 
@@ -689,6 +799,34 @@
         adminPanel.classList.add('hidden');
         mainWebsite.classList.remove('hidden');
         document.getElementById('adminPassword').value = '';
+    });
+
+    // === LOGIKA FILTER GALERI (LOOKBOOK) ===
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Ubah warna tombol agar ketahuan mana yang aktif
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-terracotta', 'text-white', 'shadow-md');
+                    b.classList.add('bg-cream', 'text-charcoal');
+                });
+                btn.classList.remove('bg-cream', 'text-charcoal');
+                btn.classList.add('bg-terracotta', 'text-white', 'shadow-md');
+
+                // 2. Sembunyikan/Tampilkan gambar
+                const filterValue = btn.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
     });
 </script>
 
@@ -988,7 +1126,134 @@
     // === MODAL QR CODE BISA DIHAPUS JIKA SUDAH TIDAK DIPAKAI LOKAL ===
     const closeQrModalBtn = document.getElementById('closeQrModalBtn');
     if(closeQrModalBtn) closeQrModalBtn.addEventListener('click', () => document.getElementById('qrCodeModal').classList.add('hidden'));
-
 </script>
+
+<script type="module">
+    import { FaceDetector, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0";
+
+    let faceDetector;
+    let webcamStream = null;
+    let isTracking = false;
+    let lastVideoTime = -1;
+    let reqAnimFrame;
+
+    async function initAI() {
+        const loadingText = document.getElementById('arLoadingText');
+        if (loadingText) loadingText.innerText = "Memuat AI Face Tracker...";
+        try {
+            const vision = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.0/wasm");
+            faceDetector = await FaceDetector.createFromOptions(vision, {
+                baseOptions: {
+                    modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite",
+                    delegate: "GPU"
+                },
+                runningMode: "VIDEO"
+            });
+            if (loadingText) loadingText.innerText = ""; 
+        } catch(e) {
+            if (loadingText) loadingText.innerText = "Gagal memuat AI. Cek koneksi.";
+            console.error(e);
+        }
+    }
+
+    initAI(); 
+
+    window.bukaARFilter = async function() {
+        document.getElementById('arFilterModal').classList.remove('hidden');
+        const video = document.getElementById('webcamVideo');
+        
+        try {
+            webcamStream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = webcamStream;
+            video.addEventListener("loadeddata", () => {
+                isTracking = true;
+                predictWebcam(); 
+            });
+        } catch (err) {
+            alert("Kamera tidak dapat diakses.");
+        }
+    }
+
+    window.tutupARFilter = function() {
+        document.getElementById('arFilterModal').classList.add('hidden');
+        isTracking = false;
+        if (webcamStream) webcamStream.getTracks().forEach(track => track.stop());
+        cancelAnimationFrame(reqAnimFrame);
+        window.clearFilterRambut();
+    }
+
+    async function predictWebcam() {
+        if (!isTracking || !faceDetector) return;
+        const video = document.getElementById('webcamVideo');
+        const overlay = document.getElementById('hairOverlay');
+        
+        if (video.currentTime !== lastVideoTime) {
+            lastVideoTime = video.currentTime;
+            const detections = faceDetector.detectForVideo(video, performance.now()).detections;
+            
+            // VALIDASI SOURCE AGAR WARNA TIDAK ERROR
+            if (detections.length > 0 && overlay.src && overlay.getAttribute('src')) {
+                overlay.style.display = 'block';
+                const face = detections[0].boundingBox;
+                
+                const ratio = Math.min(video.clientWidth / video.videoWidth, video.clientHeight / video.videoHeight);
+                const renderWidth = video.videoWidth * ratio;
+                const renderHeight = video.videoHeight * ratio;
+                const offsetX = (video.clientWidth - renderWidth) / 2;
+                const offsetY = (video.clientHeight - renderHeight) / 2;
+
+                const mirroredFaceX = video.videoWidth - face.originX - face.width;
+                const screenX = offsetX + (mirroredFaceX * ratio);
+                const screenY = offsetY + (face.originY * ratio);
+                const screenW = face.width * ratio;
+                const screenH = face.height * ratio;
+
+                const currentScale = parseFloat(document.getElementById('hairScaleSlider').value) || 2.2;
+                const currentYOffset = parseFloat(document.getElementById('hairYOffsetSlider').value) || 0.85;
+
+                const wigW = screenW * currentScale; 
+                const wigX = screenX - (wigW - screenW) / 2;
+                const wigY = screenY - (screenH * currentYOffset); 
+
+                overlay.style.width = wigW + 'px';
+                overlay.style.transform = `translate(${wigX}px, ${wigY}px)`;
+            } else {
+                overlay.style.display = 'none';
+            }
+        }
+        reqAnimFrame = requestAnimationFrame(predictWebcam); 
+    }
+
+    // UPDATE PENTING UNTUK MENCEGAH BUG WARNA
+    window.ubahFilterRambut = function(imgSrc) {
+        const overlay = document.getElementById('hairOverlay');
+        overlay.setAttribute('src', imgSrc); 
+        overlay.src = imgSrc;                
+        overlay.style.display = 'block';
+        overlay.style.filter = 'none';       
+    }
+
+    window.ubahWarnaKamera = function(warna) {
+        const overlay = document.getElementById('hairOverlay');
+        
+        if (!overlay.src || overlay.style.display === 'none' || !overlay.getAttribute('src')) {
+            alert("Pilih model rambut terlebih dahulu sebelum mewarnai!");
+            return;
+        }
+        
+        if (warna === 'ungu') overlay.style.filter = 'hue-rotate(90deg) saturate(1.5)';
+        else if (warna === 'merah') overlay.style.filter = 'hue-rotate(300deg) saturate(1.8)';
+        else if (warna === 'biru') overlay.style.filter = 'hue-rotate(180deg) saturate(1.5)';
+        else overlay.style.filter = 'none';
+    }
+
+    window.clearFilterRambut = function() {
+        const overlay = document.getElementById('hairOverlay');
+        overlay.removeAttribute('src'); 
+        overlay.style.filter = 'none';
+        overlay.style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
